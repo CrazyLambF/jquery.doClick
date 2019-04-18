@@ -15,6 +15,7 @@
  */
 (function ($) {
     var methods = {
+        // 初始化
         init: function (options) {
             var p = {
                 /**
@@ -43,9 +44,7 @@
                 var count = 0
                 $(this).on("click", function () {
                     var self = this;
-                    var sum = count;
-                    sum = +sum + 1;
-                    count = sum;
+                    count++;
                     if (timer == null) {
                         timer = setTimeout(function () {
                             var time = count;
@@ -63,6 +62,11 @@
                     }
                 });
             });
+        },
+        // 实例销毁
+        destroy: function () {
+            var $el = $(this);
+            $el.off('click');
         }
     };
     $.fn.doClick = function (method) {
